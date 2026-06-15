@@ -1,0 +1,62 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+
+const selectedTag = Astro.url.searchParams.get('tag');
+const filtered = selectedTag ? posts.filter((p) => p.data.tags.includes(selectedTag)) : posts;
+---
+
+<BaseLayout title="Blog" description="Articles sur le développement backend">
+  <section class="section-container">
+    <h1 class="text-4xl font-bold text-white mb-2">Blog</h1>
+    <p class="text-gray-400 mb-8">Notes et articles sur le développement backend.</p>
+
+    <div class="flex flex-wrap gap-2 mb-10">
+      <a
+        href="/blog"
+        class:list={[
+          'text-xs font-mono px-3 py-1 rounded-full border transition-colors',
+          !selectedTag
+            ? 'border-accent-500 text-accent-400 bg-accent-600/10'
+            : 'border-gray-700 text-gray-400 hover:border-accent-500/50',
+        ]}
+      >
+        Tous
+      </a>
+      {allTags.map((tag) => (
+        <a
+          href={`/blog?tag=${tag}`}
+          class:list={[
+            'text-xs font-mono px-3 py-1 rounded-full border transition-colors',
+            selectedTag === tag
+              ? 'border-accent-500 text-accent-400 bg-accent-600/10'
+              : 'border-gray-700 text-gray-400 hover:border-accent-500/50',
+          ]}
+        >
+          {tag}
+        </a>
+      ))}
+    </div>
+
+    <div>
+      {filtered.map((post) => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          tags={post.data.tags}
+          slug={post.slug}
+        />
+      ))}
+      {filtered.length === 0 && (
+        <p class="text-gray-500 text-sm">Aucun article pour ce tag.</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>
