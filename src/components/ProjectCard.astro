@@ -8,9 +8,15 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<article class="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col gap-4 hover:border-accent-500/40 transition-colors group">
+<article
+  class="border rounded-xl p-6 flex flex-col gap-4 hover:border-accent-500/40 transition-colors group"
+  style="background-color: var(--color-surface); border-color: var(--color-border);"
+>
   <div class="flex items-start justify-between gap-4">
-    <h2 class="text-lg font-semibold text-white group-hover:text-accent-400 transition-colors">
+    <h2
+      class="text-lg font-semibold group-hover:text-accent-500 transition-colors"
+      style="color: var(--color-text);"
+    >
       {project.name}
     </h2>
     <div class="flex gap-3 shrink-0">
@@ -19,7 +25,8 @@ const { project } = Astro.props;
           href={project.github}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-gray-500 hover:text-accent-400 transition-colors text-xs font-mono"
+          class="hover:text-accent-500 transition-colors text-xs font-mono"
+          style="color: var(--color-text-muted);"
           aria-label={`Code source de ${project.name}`}
         >
           GitHub ↗
@@ -30,7 +37,8 @@ const { project } = Astro.props;
           href={project.demo}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-gray-500 hover:text-accent-400 transition-colors text-xs font-mono"
+          class="hover:text-accent-500 transition-colors text-xs font-mono"
+          style="color: var(--color-text-muted);"
           aria-label={`Démo de ${project.name}`}
         >
           Démo ↗
@@ -38,10 +46,13 @@ const { project } = Astro.props;
       )}
     </div>
   </div>
-  <p class="text-gray-400 text-sm leading-relaxed flex-1">{project.description}</p>
+  <p class="text-sm leading-relaxed flex-1" style="color: var(--color-text-muted);">{project.description}</p>
   <div class="flex flex-wrap gap-2">
     {project.stack.map((tech) => (
-      <span class="text-xs font-mono bg-gray-800 text-gray-400 px-2 py-0.5 rounded">
+      <span
+        class="text-xs font-mono px-2 py-0.5 rounded"
+        style="background-color: var(--color-border); color: var(--color-text-muted);"
+      >
         {tech}
       </span>
     ))}
