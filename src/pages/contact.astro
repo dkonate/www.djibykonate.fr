@@ -4,8 +4,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 <BaseLayout title="Contact" description="Me contacter">
   <section class="section-container max-w-2xl">
-    <h1 class="text-4xl font-bold text-white mb-2">Contact</h1>
-    <p class="text-gray-400 mb-10">Une question, une opportunité ? Écris-moi.</p>
+    <h1 class="text-4xl font-bold mb-2" style="color: var(--color-text);">Contact</h1>
+    <p class="mb-10" style="color: var(--color-text-muted);">Une question, une opportunité ? Écris-moi.</p>
 
     <form
       action="https://formspree.io/f/YOUR_FORMSPREE_ID"
@@ -13,40 +13,40 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       class="flex flex-col gap-6"
     >
       <div class="flex flex-col gap-2">
-        <label for="name" class="text-sm font-medium text-gray-300">Nom</label>
+        <label for="name" class="text-sm font-medium" style="color: var(--color-text);">Nom</label>
         <input
           type="text"
           id="name"
           name="name"
           required
-          class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-gray-100 text-sm
-            focus:outline-none focus:border-accent-500 transition-colors placeholder:text-gray-600"
+          class="border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent-500 transition-colors"
+          style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-text);"
           placeholder="Ton prénom"
         />
       </div>
 
       <div class="flex flex-col gap-2">
-        <label for="email" class="text-sm font-medium text-gray-300">Email</label>
+        <label for="email" class="text-sm font-medium" style="color: var(--color-text);">Email</label>
         <input
           type="email"
           id="email"
           name="email"
           required
-          class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-gray-100 text-sm
-            focus:outline-none focus:border-accent-500 transition-colors placeholder:text-gray-600"
+          class="border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent-500 transition-colors"
+          style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-text);"
           placeholder="ton@email.com"
         />
       </div>
 
       <div class="flex flex-col gap-2">
-        <label for="message" class="text-sm font-medium text-gray-300">Message</label>
+        <label for="message" class="text-sm font-medium" style="color: var(--color-text);">Message</label>
         <textarea
           id="message"
           name="message"
           required
           rows="6"
-          class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-gray-100 text-sm
-            focus:outline-none focus:border-accent-500 transition-colors resize-none placeholder:text-gray-600"
+          class="border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent-500 transition-colors resize-none"
+          style="background-color: var(--color-surface); border-color: var(--color-border); color: var(--color-text);"
           placeholder="Ton message..."
         ></textarea>
       </div>
@@ -59,14 +59,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       </button>
     </form>
 
-    <div class="mt-12 pt-8 border-t border-gray-800">
-      <p class="text-gray-500 text-sm">
+    <div class="mt-12 pt-8 border-t" style="border-color: var(--color-border);">
+      <p class="text-sm" style="color: var(--color-text-muted);">
         Tu peux aussi me trouver sur
         <a href="https://github.com/djibykonate" target="_blank" rel="noopener noreferrer"
-          class="text-accent-400 hover:text-accent-300 transition-colors"> GitHub</a>
+          class="text-accent-500 hover:text-accent-400 transition-colors"> GitHub</a>
         ou
         <a href="https://linkedin.com/in/djibykonate" target="_blank" rel="noopener noreferrer"
-          class="text-accent-400 hover:text-accent-300 transition-colors"> LinkedIn</a>.
+          class="text-accent-400 hover:text-accent-400 transition-colors"> LinkedIn</a>.
       </p>
     </div>
   </section>
