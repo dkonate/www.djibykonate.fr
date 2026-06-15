@@ -1,0 +1,64 @@
+---
+const navLinks = [
+  { href: '/', label: 'Accueil' },
+  { href: '/experience', label: 'Expériences' },
+  { href: '/projects', label: 'Projets' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="sticky top-0 z-50 bg-gray-950/90 backdrop-blur border-b border-gray-800">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="/" class="font-mono text-accent-400 font-bold text-lg hover:text-accent-300">
+      djiby.dev
+    </a>
+    <ul class="hidden md:flex items-center gap-6">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              'text-sm font-medium transition-colors',
+              currentPath === href
+                ? 'text-accent-400'
+                : 'text-gray-400 hover:text-gray-100',
+            ]}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <button id="menu-toggle" class="md:hidden text-gray-400 hover:text-gray-100" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-gray-950 border-t border-gray-800 px-4 py-4">
+    <ul class="flex flex-col gap-4">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              'text-sm font-medium',
+              currentPath === href ? 'text-accent-400' : 'text-gray-300',
+            ]}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>
