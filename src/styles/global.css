@@ -13,12 +13,12 @@
   }
 
   .dark {
-    --color-bg: #1c1409;
-    --color-surface: #2a1d0f;
-    --color-border: #3d2b16;
+    --color-bg: #18181b;
+    --color-surface: #27272a;
+    --color-border: #3f3f46;
     --color-text: #fef3c7;
     --color-text-muted: #d4a96a;
-    --color-nav-bg: rgba(28, 20, 9, 0.9);
+    --color-nav-bg: rgba(24, 24, 27, 0.9);
   }
 
   html {
