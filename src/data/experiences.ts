@@ -37,7 +37,7 @@ export const experiences: Experience[] = [
   }, 
   {
     title: 'Développeur back-end Php | Symfony',
-    company: 'FNAC Darty',
+    company: 'LEtudiant',
     period: 'Décembre 2016 - Mai 2017',
     description: '- Migration du site de letudiant.fr en Symfony2',
     tags: ['PHP', 'Symfony', 'Silex', 'PHPUnit', 'RabbitMQ', 'Redis'],
